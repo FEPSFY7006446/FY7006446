@@ -189,7 +189,7 @@ model, causing the classifier confidence to drop, as in Vlachos (2008).
       const response = await fetch(url, {
        method: 'GET',
        headers: {
-        'Accepts': 'application/vnd.github.v3+json',
+        'Accept': 'application/vnd.github.v3+json',
        }
      }); 
 
@@ -199,11 +199,11 @@ model, causing the classifier confidence to drop, as in Vlachos (2008).
 
      const commits = await response.json();
      if (commits && commits.length>0) {
-      const lastCommitDate = new date(commits[0].commit.committer.date);
+      const lastCommitDate = new Date(commits[0].commit.committer.date);
 
-      document.getElementById('last-updated').innerText = 'Last Modified Time: ${lastCommitDate.toLoacalString()}';
+      document.getElementById('last-updated').innerText = 'Last Modified Time: ${lastCommitDate.toLocalString()}';
      } else { 
-      document.grtElementById('last-updated').innerText = 'No commits found in the repository.';
+      document.getElementById('last-updated').innerText = 'No commits found in the repository.';
      }
    } catch(error) {
      console.error('Error fetching the last updated time:', error);
@@ -212,13 +212,13 @@ model, causing the classifier confidence to drop, as in Vlachos (2008).
   }
 
   async function verifyLastUpdatedTime() {
-   document.getElementById('Last-updated').innerText = 'Verifying...';
+   document.getElementById('last-updated').innerText = 'Verifying...';
    await getLastUpdatedTime();
-   alert("Last modified time has been successfully verified from GitHun API.");
+   alert("Last modified time has been successfully verified from GitHub API.");
   }
 
 
-  window.addEventListener('Load',getLastUpdatedTime);
+  window.addEventListener('load',getLastUpdatedTime);
   </script>
  
 
